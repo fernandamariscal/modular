@@ -118,233 +118,38 @@ export const menu_list = [
 
 export const food_list = [
     {
-        _id: "1",
-        name: "Greek salad",
         image: food_1,
-        price: 12,
-        description: "Food provides essential nutrients for overall health and well-being",
-        category: "Salad"
+        description: "FinanTec ofrece plantillas personalizadas para crear presupuestos adaptados a las necesidades del usuario. Facilita la proyección de presupuestos futuros y la gestión de cobros, asegurando un flujo de caja saludable. Permite ajustes flexibles y proporciona análisis detallados para mejorar la planificación financiera. Su interfaz intuitiva y herramientas de visualización hacen que la gestión del presupuesto sea sencilla y eficiente. Con FinanTec, los usuarios pueden crear y mantener presupuestos efectivos para una mejor salud financiera.",
+        category: "Presupuesto"
     },
     {
-        _id: "2",
-        name: "Veg salad",
         image: food_2,
-        price: 18,
-        description: "Food provides essential nutrients for overall health and well-being",
-        category: "Salad"
+        description: "FinanTec permite ahorrar de manera fácil y efectiva, ofreciendo planes de ahorro personalizados según tus objetivos. Puedes seleccionar la cantidad que deseas comenzar a ahorrar y ajustar tus metas en cualquier momento. La aplicación te ayuda a automatizar ahorros recurrentes y proporciona análisis detallados para optimizar tus estrategias de ahorro. Su interfaz intuitiva y herramientas de seguimiento te mantienen enfocado en tus objetivos financieros. Con FinanTec, ahorrar se convierte en una tarea sencilla y alcanzable.",
+        category: "Ahorro",
+        templateDownload: true // Agregar esta propiedad para indicar que se debe mostrar el botón de descarga
     }, {
-        _id: "3",
-        name: "Clover Salad",
         image: food_3,
-        price: 16,
-        description: "Food provides essential nutrients for overall health and well-being",
-        category: "Salad"
+        description: "FinanTec ofrece herramientas para generar listas de las mejores opciones de inversión y plantillas personalizadas para crear estrategias de inversión. Permite calcular las ganancias proyectadas y comparar diferentes escenarios de inversión. Proporciona análisis detallados y reportes para optimizar las decisiones de inversión. Su interfaz intuitiva y visualizaciones claras facilitan la comprensión y el seguimiento de las inversiones. Con FinanTec, los usuarios pueden planificar y gestionar sus inversiones de manera efectiva para maximizar sus rendimientos.",
+        category: "Inversion"
     }, {
-        _id: "4",
-        name: "Chicken Salad",
         image: food_4,
-        price: 24,
-        description: "Food provides essential nutrients for overall health and well-being",
-        category: "Salad"
+        description: "FinanTec brinda herramientas para generar listas de las mejores prácticas contables y plantillas personalizadas para diversas necesidades contables. Permite calcular ingresos, gastos y balances financieros de manera eficiente. Facilita la gestión de cuentas por cobrar y por pagar, así como el seguimiento de activos y pasivos. Proporciona análisis detallados y reportes para optimizar la contabilidad y cumplir con las normativas.",
+        category: "Contabilidad"
     }, {
-        _id: "5",
-        name: "Lasagna Rolls",
         image: food_5,
-        price: 14,
-        description: "Food provides essential nutrients for overall health and well-being",
-        category: "Rolls"
+        description: "Con FinanTec, puedes identificar y reducir gastos innecesarios mediante análisis detallados de tus hábitos de gasto. La aplicación ofrece herramientas para crear presupuestos personalizados y establecer límites claros para cada categoría de gastos, ayudando a evitar los gastos hormiga. Además, proporciona alertas y recordatorios para evitar pagos tardíos o excesivos. Su interfaz intuitiva y visualizaciones claras te permiten comprender fácilmente tus patrones de gasto y tomar decisiones informadas para optimizar tu presupuesto.",
+        category: "Gastos"
     }, {
-        _id: "6",
-        name: "Peri Peri Rolls",
         image: food_6,
-        price: 12,
-        description: "Food provides essential nutrients for overall health and well-being",
-        category: "Rolls"
+        description: "FinanTec ofrece herramientas para maximizar la gestión de recursos y sobrevivir con lo disponible. Genera listas de recursos disponibles y brinda plantillas para aprovecharlos al máximo. Calcula opciones para optimizar el uso de recursos extras y proyectar su impacto en la supervivencia a largo plazo. Proporciona análisis detallados y estrategias adaptativas para enfrentar situaciones cambiantes.",
+        category: "Recursos"
     }, {
-        _id: "7",
-        name: "Chicken Rolls",
         image: food_7,
-        price: 20,
-        description: "Food provides essential nutrients for overall health and well-being",
-        category: "Rolls"
+        description: "FinanTec ofrece herramientas para calcular impuestos de manera precisa y personalizada, simplificando el proceso para los usuarios. Proporciona plantillas y guías para ayudar en la organización de documentos fiscales y la preparación de declaraciones. Permite estimar los impuestos a pagar y ofrece consejos para optimizar deducciones y créditos fiscales. Además, brinda alertas y recordatorios para fechas límite fiscales importantes.",
+        category: "Impuestos"
     }, {
-        _id: "8",
-        name: "Veg Rolls",
         image: food_8,
-        price: 15,
-        description: "Food provides essential nutrients for overall health and well-being",
-        category: "Rolls"
-    }, {
-        _id: "9",
-        name: "Ripple Ice Cream",
-        image: food_9,
-        price: 14,
-        description: "Food provides essential nutrients for overall health and well-being",
-        category: "Deserts"
-    }, {
-        _id: "10",
-        name: "Fruit Ice Cream",
-        image: food_10,
-        price: 22,
-        description: "Food provides essential nutrients for overall health and well-being",
-        category: "Deserts"
-    }, {
-        _id: "11",
-        name: "Jar Ice Cream",
-        image: food_11,
-        price: 10,
-        description: "Food provides essential nutrients for overall health and well-being",
-        category: "Deserts"
-    }, {
-        _id: "12",
-        name: "Vanilla Ice Cream",
-        image: food_12,
-        price: 12,
-        description: "Food provides essential nutrients for overall health and well-being",
-        category: "Deserts"
-    },
-    {
-        _id: "13",
-        name: "Chicken Sandwich",
-        image: food_13,
-        price: 12,
-        description: "Food provides essential nutrients for overall health and well-being",
-        category: "Sandwich"
-    },
-    {
-        _id: "14",
-        name: "Vegan Sandwich",
-        image: food_14,
-        price: 18,
-        description: "Food provides essential nutrients for overall health and well-being",
-        category: "Sandwich"
-    }, {
-        _id: "15",
-        name: "Grilled Sandwich",
-        image: food_15,
-        price: 16,
-        description: "Food provides essential nutrients for overall health and well-being",
-        category: "Sandwich"
-    }, {
-        _id: "16",
-        name: "Bread Sandwich",
-        image: food_16,
-        price: 24,
-        description: "Food provides essential nutrients for overall health and well-being",
-        category: "Sandwich"
-    }, {
-        _id: "17",
-        name: "Cup Cake",
-        image: food_17,
-        price: 14,
-        description: "Food provides essential nutrients for overall health and well-being",
-        category: "Cake"
-    }, {
-        _id: "18",
-        name: "Vegan Cake",
-        image: food_18,
-        price: 12,
-        description: "Food provides essential nutrients for overall health and well-being",
-        category: "Cake"
-    }, {
-        _id: "19",
-        name: "Butterscotch Cake",
-        image: food_19,
-        price: 20,
-        description: "Food provides essential nutrients for overall health and well-being",
-        category: "Cake"
-    }, {
-        _id: "20",
-        name: "Sliced Cake",
-        image: food_20,
-        price: 15,
-        description: "Food provides essential nutrients for overall health and well-being",
-        category: "Cake"
-    }, {
-        _id: "21",
-        name: "Garlic Mushroom ",
-        image: food_21,
-        price: 14,
-        description: "Food provides essential nutrients for overall health and well-being",
-        category: "Pure Veg"
-    }, {
-        _id: "22",
-        name: "Fried Cauliflower",
-        image: food_22,
-        price: 22,
-        description: "Food provides essential nutrients for overall health and well-being",
-        category: "Pure Veg"
-    }, {
-        _id: "23",
-        name: "Mix Veg Pulao",
-        image: food_23,
-        price: 10,
-        description: "Food provides essential nutrients for overall health and well-being",
-        category: "Pure Veg"
-    }, {
-        _id: "24",
-        name: "Rice Zucchini",
-        image: food_24,
-        price: 12,
-        description: "Food provides essential nutrients for overall health and well-being",
-        category: "Pure Veg"
-    },
-    {
-        _id: "25",
-        name: "Cheese Pasta",
-        image: food_25,
-        price: 12,
-        description: "Food provides essential nutrients for overall health and well-being",
-        category: "Pasta"
-    },
-    {
-        _id: "26",
-        name: "Tomato Pasta",
-        image: food_26,
-        price: 18,
-        description: "Food provides essential nutrients for overall health and well-being",
-        category: "Pasta"
-    }, {
-        _id: "27",
-        name: "Creamy Pasta",
-        image: food_27,
-        price: 16,
-        description: "Food provides essential nutrients for overall health and well-being",
-        category: "Pasta"
-    }, {
-        _id: "28",
-        name: "Chicken Pasta",
-        image: food_28,
-        price: 24,
-        description: "Food provides essential nutrients for overall health and well-being",
-        category: "Pasta"
-    }, {
-        _id: "29",
-        name: "Buttter Noodles",
-        image: food_29,
-        price: 14,
-        description: "Food provides essential nutrients for overall health and well-being",
-        category: "Noodles"
-    }, {
-        _id: "30",
-        name: "Veg Noodles",
-        image: food_30,
-        price: 12,
-        description: "Food provides essential nutrients for overall health and well-being",
-        category: "Noodles"
-    }, {
-        _id: "31",
-        name: "Somen Noodles",
-        image: food_31,
-        price: 20,
-        description: "Food provides essential nutrients for overall health and well-being",
-        category: "Noodles"
-    }, {
-        _id: "32",
-        name: "Cooked Noodles",
-        image: food_32,
-        price: 15,
-        description: "Food provides essential nutrients for overall health and well-being",
-        category: "Noodles"
+        description: "FinanTec ofrece herramientas para realizar análisis financieros detallados, proporcionando orientación sobre cómo llevarlos a cabo y mejorar su precisión. Ofrece plantillas personalizadas y guías para estructurar análisis de manera efectiva. Permite la integración de datos externos para enriquecer el análisis y mejorar su calidad. Proporciona herramientas de visualización y comparación para identificar tendencias y patrones importantes.",
+        category: "Analisis"
     }
 ]
