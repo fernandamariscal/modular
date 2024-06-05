@@ -2,10 +2,21 @@ import React, { useState } from 'react'
 import './Navbar.css'
 import { assets } from '../assets/assets'
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 const Navbar = () => {
+
+  
     const [menu, setMenu] = useState("Nosotros");
+
+    const navigate = useNavigate();
+
+    const handleButtonClick = () => {
+      navigate('/login');
+    };
+
+
   return (
     <div className='navbar'>
         <img src={assets.logo} alt="" className="logo"/>
@@ -17,7 +28,7 @@ const Navbar = () => {
         </ul>
         <div className="navbar-right">
             <img src={assets.search_icon} alt="" />
-            <button>sing in</button>
+            <button onClick = {handleButtonClick}>sign in</button>
         </div>
     </div>
   )
