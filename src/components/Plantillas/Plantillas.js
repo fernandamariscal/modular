@@ -16,7 +16,13 @@ const Plantillas = ({ category }) => {
             <p>{plantilla.description}</p>
             {/* Agregar el botón de descarga solo si la propiedad templateDownload es true */}
             {plantilla.category === 'Ahorro' && plantilla.templateDownload && (
-              <a href={plantilla.templateUrl} className='descarga-button'>Descarga Plantilla</a>
+              <a
+                href='/Plantilla Ahorro.pdf'
+                className='descarga-button'
+                download="Plantilla Ahorro.pdf"
+              >
+                Descarga Plantilla
+              </a>
             )}
           </div>
         ))}
