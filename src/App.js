@@ -6,6 +6,7 @@ import PlaceOrder from './pages/PlaceOrder/PlaceOrder'
 import Footer from './components/Footer/Footer'
 import Login from './pages/Login/Login'
 import Signup from './pages/Login/Signup'
+import Form from './pages/Form/Form'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 const App = () => {
@@ -18,6 +19,7 @@ const App = () => {
           <Route path='/order' element={<PlaceOrder/>}/>
           <Route path='/login' element={<Login/>}/>
           <Route path='/signup' element={<Signup/>}/>
+          <Route path='/form' element={<Form/>}/>
         </Routes>
       </div>
       <Footer/>
@@ -25,4 +27,4 @@ const App = () => {
   )
 }
 
-export default App
+export default App;
