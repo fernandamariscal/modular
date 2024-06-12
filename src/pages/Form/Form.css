@@ -1,0 +1,44 @@
+.form-container {
+    position: relative; /* Permitir posicionar elementos hijos relativos a este contenedor */
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: transparent; /* Hacer el fondo transparente para que la imagen sea visible */
+    border-radius: 10px;
+}
+
+.form-background {
+    position: absolute; /* Posicionar la imagen de fondo */
+    top: 0; /* Colocar la imagen en la parte superior */
+    left: 0; /* Alinear la imagen a la izquierda */
+    width: 100%; /* Ajustar el ancho para que cubra todo el contenedor */
+    height: auto; /* Permitir que la altura se ajuste automáticamente */
+    z-index: -1; /* Colocar la imagen detrás del contenido */
+}
+
+.progress-bar {
+    margin-top: 82px; /* Ajustar el margen superior para dejar espacio para la barra de progreso */
+}
+
+.form-buttons {
+    margin-top: 20px;
+}
+
+.form-button {
+    padding: 10px 20px;
+    border-radius: 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-right: 20px;
+}
+
+.form-button:last-child {
+    margin-right: 0;
+}
+
+.form-button:hover {
+    background-color: #0056b3;
+}
