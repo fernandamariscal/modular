@@ -30,6 +30,7 @@ const Navbar = () => {
         <img src={assets.logo} alt="" className="logo"/>
         {/* Lista de elementos del menú de navegación */}
         <ul className="navbar-menu">
+<<<<<<< HEAD
             {/* Enlace a la página de inicio, con clase 'active' si es la página actual */}
             <Link to='/' onClick={() => setMenu("Bienvenida")} className={menu === "Bienvenida" ? "active" : ""}>Bienvenida</Link>
             {/* Enlace a la sección de recursos, con clase 'active' si es la página actual */}
@@ -38,6 +39,12 @@ const Navbar = () => {
             <a href='#app-download' onClick={() => setMenu("Plantillas")} className={menu === "Plantillas" ? "active" : ""}>plantillas</a>
             {/* Enlace a la sección de contacto, con clase 'active' si es la página actual */}
             <a href='#footer' onClick={() => setMenu("Contacto")} className={menu === "Contacto" ? "active" : ""}>Contacto</a>
+=======
+            <Link to='/' onClick={()=>setMenu("Bienvenida")} className={menu==="Bienvenida"?"active":""}>Bienvenida</Link>
+            <a href='#explore-menu' onClick={()=>setMenu("Recursos")} className={menu==="Recursos"?"active":""}>Recursos</a>
+            <a href='#app-download' onClick={()=>setMenu("Plantillas")} className={menu==="Plantillas"?"active":""}>Plantillas</a>
+            <a href='#footer' onClick={()=>setMenu("Contacto")} className={menu==="Contacto"?"active":""}>Contacto</a>
+>>>>>>> ccb39b9d7d1a016b5059bfa4d1d817e3d321586e
         </ul>
         {/* Sección derecha del navbar */}
         <div className="navbar-right">
