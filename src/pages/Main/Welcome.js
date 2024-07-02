@@ -8,7 +8,7 @@ const Welcome = () => {
     useEffect(() => {
         const userData = JSON.parse(localStorage.getItem('user')) || {};
         setUser(userData);
-    }, []);
+    }, []);      
 
     const toggleSidebar = () => {
         setSidebarOpen(!sidebarOpen);
