@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Welcome.css'; // Asegúrate de importar tu hoja de estilos
+import MenuForm from './MenuForm/MenuForm'; // Importa el nuevo componente
 
 const Welcome = () => {
     const [user, setUser] = useState({ Nombres: 'Usuario', Apellidos: '' });
@@ -8,7 +9,7 @@ const Welcome = () => {
     useEffect(() => {
         const userData = JSON.parse(localStorage.getItem('user')) || {};
         setUser(userData);
-    }, []);
+    }, []);      
 
     const toggleSidebar = () => {
         setSidebarOpen(!sidebarOpen);
@@ -24,6 +25,7 @@ const Welcome = () => {
             </div>
             <div className={`blue-sidebar ${sidebarOpen ? 'open' : ''}`}></div>
             <h1 style={{ marginTop: '100px' }}>Bienvenido, {user.Nombres} {user.Apellidos}</h1>
+            <MenuForm /> {/* Usa el nuevo componente */}
         </div>
     );
 }
