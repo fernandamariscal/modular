@@ -7,7 +7,7 @@ import PlaceOrder from './pages/PlaceOrder/PlaceOrder';
 import Login from './pages/Login/Login';
 import Signup from './pages/Login/Signup';
 import Welcome from './pages/Main/Welcome';
-import Form from './pages/Form/Form';
+
 
 const App = () => {
   return (
@@ -23,7 +23,6 @@ const App = () => {
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<Signup />} />
         <Route path='/welcome' element={<Welcome />} />
-        <Route path='/form' element={<Form />} />
       </Route>
     </Routes>
   );

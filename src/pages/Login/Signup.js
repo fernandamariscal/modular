@@ -48,7 +48,7 @@ const Signup = () => {
             .join('&');
         
         xhttp.send(encodedData);
-        navigate('/form');
+        navigate('/Welcome');
     };
 
     return (
