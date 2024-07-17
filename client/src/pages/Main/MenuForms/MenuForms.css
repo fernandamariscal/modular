@@ -1,0 +1,229 @@
+/* MenuForms.css */
+
+/* Estilos generales para el contenedor */
+.menu-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Estilos para los títulos */
+.menu-form h2 {
+    margin: 10px 0;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+/* Estilos para las opciones del menú */
+.menu-options {
+    display: flex;
+    flex-direction: row; /* Alinea los recuadros horizontalmente */
+    gap: 20px;
+    justify-content: center; /* Centra los recuadros */
+    margin-top: 20px; /* Espacio entre el título y los recuadros */
+}
+
+.saving-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    width: 200px;
+    height: 150px; /* Altura fija para uniformidad */
+    text-align: center; /* Centra el texto dentro del recuadro */
+}
+
+.saving-box:hover {
+    background-color: #f0f0f0;
+    transform: translateY(-5px);
+}
+
+.saving-box.green {
+    background-color: #e0ffe0;
+}
+
+.saving-box.blue {
+    background-color: #e0f0ff;
+}
+
+.saving-box.pink {
+    background-color: #ffe0f0;
+}
+
+.icon {
+    margin-bottom: 10px;
+    font-size: 2rem;
+}
+
+/* styleForms.css */
+
+/* Estilos para los formularios */
+.form-container {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 400px;
+    position: relative; /* Añadir posición relativa para animación */
+}
+
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group select,
+.form-group input[type="number"],
+.form-group input[type="submit"] {
+    width: 100%;
+    padding: 8px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+
+/* Estilos para los formularios */
+.form-container {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 400px;
+    position: absolute; /* Cambiado a posición absoluta */
+    left: 50%; /* Centrado horizontal */
+    top: 50%; /* Centrado vertical */
+    transform: translate(-50%, -50%); /* Centrado exacto */
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group select,
+.form-group input[type="number"],
+.form-group input[type="submit"] {
+    width: 100%;
+    padding: 8px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.form-group input[type="submit"] {
+    width: 100%; /* Asegura que el botón ocupe el ancho completo del contenedor */
+    padding: 8px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    position: relative;
+}
+
+
+
+.form-group input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.form-container {
+    background-color: rgb(255, 255, 255); /* Fondo blanco semitransparente */
+    border: 1px solid #030303af;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 550px; /* Ancho máximo aumentado */
+    height: 500px; /* Altura común para todos los formularios */
+    overflow-x: auto; /* Barra de desplazamiento horizontal cuando los campos exceden el ancho */
+    position: absolute; /* Cambiado a posición absoluta */
+    left: 50%; /* Centrado horizontal */
+    top: 50%; /* Centrado vertical */
+    transform: translate(-50%, -50%); /* Centrado exacto */
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group select,
+.form-group input[type="number"],
+.form-group input[type="submit"] {
+    width: calc(100% - 16px); /* Ajuste para compensar el padding y bordes */
+    padding: 8px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin: auto; /* Centrado horizontal */
+    display: block; /* Mostrar en bloque para ocupar todo el ancho disponible */
+}
+
+/* Estilos para la animación de éxito */
+.success-animation {
+    position: absolute;
+    top: 50%;
+    left: 45%;
+    transform: translate(-50%, -50%);
+    width: 100px; /* Mayor tamaño del círculo verde */
+    height: 100px; /* Mayor tamaño del círculo verde */
+    border-radius: 50%;
+    background-color: #4caf50; /* Color verde */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: bounce 0.8s ease forwards;
+}
+
+.success-check {
+    font-size: 5rem; /* Mayor tamaño de la palomita */
+    color: white;
+}
+
+@keyframes bounce {
+    0% {
+        transform: scale(0);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
