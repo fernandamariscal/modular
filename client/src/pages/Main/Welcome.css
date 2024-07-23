@@ -1,19 +1,113 @@
 /* Estilos para la barra superior */
 .black-bar {
-    background-color: black;
-    height: 50px;
+    background-color: #000;
+    height: 60px;
     width: 100%;
     position: fixed;
     top: 0;
     left: 0;
     z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    box-sizing: border-box; /* Incluye el padding en el ancho total */
 }
+
+
+/* Icono del usuario en la franja negra */
+.user-icon {
+    color: white;
+    font-size: 24px; /* Tamaño del ícono */
+    cursor: pointer; /* Cursor de puntero para indicar clickeable */
+    position: relative; /* Para posicionar el menú desplegable */
+}
+
+/* Menú desplegable del usuario */
+.user-menu {
+    position: absolute;
+    right: 20px; /* Ajustar la posición según sea necesario */
+    top: 70px; /* Ajustar la posición según sea necesario */
+    background-color: white; /* Fondo blanco para el menú */
+    color: black;
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada */
+    z-index: 20; /* Asegurarse de que esté sobre otros elementos */
+    width: 200px; /* Ancho del menú */
+    display: flex;
+    flex-direction: column;
+    padding: 0; /* Elimina el espaciado interno para alinear mejor el pico */
+}
+
+/* Pico del menú desplegable */
+.user-menu::before {
+    content: "";
+    position: absolute;
+    top: -10px; /* Ajusta según sea necesario */
+    right: 20px; /* Ajusta según sea necesario */
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid white; /* Color del fondo del menú */
+}
+
+/* Elementos del menú desplegable */
+.user-menu-item {
+    padding: 12px; /* Espaciado interno */
+    display: flex;
+    align-items: center; /* Alineación vertical del ícono y el texto */
+    border-bottom: 1px solid #ddd; /* Línea divisoria */
+    cursor: pointer; /* Cursor de puntero para elementos clickeables */
+    transition: background-color 0.3s; /* Transición suave para el hover */
+}
+
+.user-menu-item:hover {
+    background-color: #f0f0f0; /* Fondo más oscuro al pasar el ratón */
+}
+
+.user-menu-item:last-child {
+    border-bottom: none; /* Sin línea divisoria para el último elemento */
+}
+
+.user-menu-item i {
+    margin-right: 8px; /* Espaciado entre el ícono y el texto */
+}
+
+/* Estilos para la barra lateral azul */
+
+.blue-sidebar.open {
+    width: 250px; /* Ancho de la barra lateral abierta */
+}
+
+/* Estilos para los elementos de la barra lateral */
+.sidebar-item {
+    padding: 15px;
+    text-align: left;
+    color: white;
+    display: flex;
+    align-items: center; /* Alineación vertical del ícono y el texto */
+    cursor: pointer; /* Cursor de puntero para elementos clickeables */
+    transition: background-color 0.3s; /* Transición suave para el hover */
+}
+
+.sidebar-item:hover {
+    background-color: #1c6ea4; /* Fondo más oscuro al pasar el ratón */
+}
+
+.sidebar-item i {
+    margin-right: 10px; /* Espaciado entre el ícono y el texto */
+}
+
+/* Icono de cerrar la barra lateral */
+.close-sidebar {
+    font-size: 20px;
+}
+
 
 /* Estilos para el icono del menú */
 .menu-icon {
-    position: fixed;
-    top: 10px;
-    left: 10px;
     cursor: pointer;
     z-index: 11;
     display: flex;
@@ -29,22 +123,68 @@
     background-color: white;
 }
 
+.blue-sidebar.open {
+    width: 200px; /* Ancho ajustado cuando tiene la clase 'open' */
+}
+
+/* Estilos para las opciones en la barra lateral */
+.sidebar-options {
+    display: flex;
+    flex-direction: column;
+    padding: 15px; /* Espaciado reducido */
+    height: 100%; /* Asegurarse de que ocupa toda la altura */
+    justify-content: flex-start; /* Distribuir espacio entre los elementos */
+}
+
+.sidebar-item {
+    display: flex;
+    align-items: center;
+    padding: 10px; /* Reducción del padding */
+    font-size: 0.9rem; /* Tamaño de fuente más pequeño */
+    color: white;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3); /* Línea separadora más visible */
+    margin-bottom: 8px; /* Menos separación entre los elementos */
+    transition: background-color 0.3s, color 0.3s; /* Transición para el efecto hover */
+    border-radius: 6px; /* Bordes redondeados */
+}
+
+.sidebar-item:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Fondo más visible al pasar el ratón */
+    color: #13073f; /* Color de texto al pasar el ratón */
+}
+
 /* Estilos para la barra lateral azul */
 .blue-sidebar {
     height: 100%;
     width: 0;
     position: fixed;
     z-index: 9;
-    top: 50px; /* Posicionada debajo de la barra negra */
+    top: 60px; /* Posicionada debajo de la barra negra */
     left: 0;
-    background-color: rgba(22, 22, 49, 0.904);
+    background: linear-gradient(135deg, #5ef1c0, #0a99b3, #1a6da5, #160464); /* Gradiente azul con cuatro colores */
     overflow-x: hidden;
     transition: width 0.5s; /* Transición solo en el ancho para la apertura y cierre */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3); /* Sombra sutil para el borde */
 }
 
-.blue-sidebar.open {
-    width: 250px; /* Ancho expandido cuando tiene la clase 'open' */
+/* Estilos específicos para el botón de cerrar */
+.sidebar-item.close-sidebar {
+    margin-top: 20px; /* Moverlo más arriba */
+    border-top: 1px solid rgba(255, 255, 255, 0.2); /* Línea separadora superior */
+    border-bottom: none; /* Sin línea inferior */
 }
+
+.blue-sidebar.open .sidebar-item.close-sidebar {
+    display: flex; /* Mostrar solo cuando la barra lateral está abierta */
+}
+
+/* Icono para el botón "Volver" */
+.close-sidebar .icon {
+    font-size: 1.5rem; /* Tamaño del ícono */
+}
+
+
 
 /* Nuevo estilo para la sección de pregunta y menú */
 .menu-form-container {
@@ -78,4 +218,29 @@
     opacity: 1; /* Mostrar cuando tiene la clase 'show' */
 }
 
+/* Estilos para el título "Generar Ahorro" */
+.ahorrar-title {
+    position: absolute;
+    top: 40%; /* Ajustar según sea necesario */
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    font-size: 2rem;
+    color: #333;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
 
+.ahorrar-title.show {
+    opacity: 1;
+}
+.welcome {
+    display: flex;
+    flex-direction: column; /* Alineación vertical */
+    justify-content: center; /* Centrar verticalmente */
+    align-items: center; /* Centrar horizontalmente */
+    width: 100%;
+    height: 100vh; /* Usar toda la altura de la ventana */
+    overflow: hidden; /* Evitar barras de desplazamiento innecesarias */
+    position: relative; /* Asegurarse de que el contenido se alinee correctamente */
+}
