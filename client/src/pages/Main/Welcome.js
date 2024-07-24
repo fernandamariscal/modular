@@ -122,7 +122,7 @@ const Welcome = () => {
                 {selectedForm === 'save' && <Ahorro />}
                 {selectedForm === 'retirement' && <Jubilacion />}
                 {selectedForm === 'goal' && <Metas />}
-                {selectedForm === 'gastos' && <Gastos />}
+                {selectedForm === 'gastos' && <Gastos userId={user._id} />} {/* Pasar userId a Gastos */}
             </div>
         </div>
     );
