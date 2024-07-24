@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import './Gastos.css';
-import { FaTrash } from 'react-icons/fa'; // Asegúrate de tener react-icons instalado
+import { FaTrash } from 'react-icons/fa';
 
-const Gastos = () => {
+const Gastos = ({ userId }) => {
     const [showForm, setShowForm] = useState(false);
     const [showServiceForm, setShowServiceForm] = useState(false);
     const [expenses, setExpenses] = useState([{ type: '', name: '', cost: '' }]);
@@ -21,14 +21,12 @@ const Gastos = () => {
     const handleCloseForm = () => {
         setShowForm(false);
         setShowServiceForm(false);
-        // Reset form fields
         setExpenses([{ type: '', name: '', cost: '' }]);
         setServices([{ type: '', amount: '', frequency: '' }]);
     };
 
     const handleChange = (index, field, value, form) => {
         const newForm = form === 'expenses' ? [...expenses] : [...services];
-        // Evita valores negativos
         if (field === 'amount') {
             value = Math.max(0, value);
         }
@@ -52,12 +50,48 @@ const Gastos = () => {
         setServices(services.filter((_, i) => i !== index));
     };
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        // Aquí puedes agregar la lógica para manejar el envío del formulario
-        console.log(expenses);
-        console.log(services);
-        handleCloseForm();
+        try {
+            if (showForm) {
+                const response = await fetch('http://localhost:5000/api/expenses/registerExpense', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        userId,
+                        expenses
+                    })
+                });
+
+                if (response.ok) {
+                    console.log('Gastos registrados con éxito');
+                } else {
+                    console.error('Error al registrar los gastos');
+                }
+            } else if (showServiceForm) {
+                const response = await fetch('http://localhost:5000/api/expenses/registerService', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        userId,
+                        services
+                    })
+                });
+
+                if (response.ok) {
+                    console.log('Servicios registrados con éxito');
+                } else {
+                    console.error('Error al registrar los servicios');
+                }
+            }
+            handleCloseForm();
+        } catch (error) {
+            console.error('Error al enviar el formulario:', error);
+        }
     };
 
     return (
