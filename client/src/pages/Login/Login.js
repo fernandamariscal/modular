@@ -46,12 +46,12 @@ const Login = () => {
     
 
     return (
-        <div className='login template d-flex justify-content-center align-items-center vh-100 bg-custom'>
+        <div className='login-template d-flex justify-content-center align-items-center vh-100 bg-custom'>
             <div className='form_container p-5 rounded bg-white w-50'>
-                <img src='finantec.png' alt='Logo' className='login-logo mb-4' />
-                <form onSubmit={handleSubmit}>
+                <img src='finantec.png' alt='Logo' className='login-logo mb-4 d-block mx-auto' />
+                <form onSubmit={handleSubmit} className='d-flex flex-column align-items-center'>
                     <h3 className='text-center'>Sign In</h3>
-                    <div className='mb-2'>
+                    <div className='mb-3 w-100'>
                         <label htmlFor='email'>Email</label>
                         <input
                             type='email'
@@ -61,7 +61,7 @@ const Login = () => {
                             onChange={handleChange}
                         />
                     </div>
-                    <div className='mb-2'>
+                    <div className='mb-3 w-100'>
                         <label htmlFor='password'>Password</label>
                         <input
                             type='password'
@@ -71,9 +71,9 @@ const Login = () => {
                             onChange={handleChange}
                         />
                     </div>
-                    <div className='mb-2'>
-                        <input type='checkbox' className='custom-checkbox custom-checkbox' id='check' />
-                        <label htmlFor='check' className='custom-input-label ms-2'>
+                    <div className='mb-3 w-100 d-flex align-items-center'>
+                        <input type='checkbox' className='form-check-input' id='check' />
+                        <label htmlFor='check' className='form-check-label ms-3 mt-3'>
                             Remember me
                         </label>
                     </div>

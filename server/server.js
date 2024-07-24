@@ -4,6 +4,7 @@ const cors = require('cors');
 const connectDB = require('./config/db');
 const usersRouter = require('./routes/users');
 const formsRouter = require('./routes/forms'); // Importa el router de forms
+const expensesRouter = require('./routes/expenses'); //Importa el router de Gastos
 
 const app = express();
 
@@ -17,6 +18,7 @@ app.use(cors());
 // Rutas
 app.use('/api', usersRouter); // Define la ruta base '/api' para usuarios
 app.use('/api/forms', formsRouter); // Define la ruta base '/api/forms' para formularios
+app.use('/api/expenses', expensesRouter); // Define la ruta base '/api/forms' para formularios
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Servidor corriendo en el puerto ${PORT}`));
