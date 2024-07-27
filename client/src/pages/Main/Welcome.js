@@ -6,10 +6,7 @@ import Ahorro from '../Subs/Ahorro';
 import Jubilacion from '../Subs/Jubilacion';
 import Metas from '../Subs/Metas';
 import Gastos from '../Subs/Gastos';
-<<<<<<< HEAD
 import Historial from '../Subs/Historial';
-=======
->>>>>>> a47adc3667e3821ac36a4dc3883b757fe8c6ad83
 
 const Welcome = () => {
     const [user, setUser] = useState({ Nombres: 'Usuario', Apellidos: '', _id: '' });
@@ -112,13 +109,10 @@ const Welcome = () => {
                         <i className="bi bi-wallet icon" aria-hidden="true"></i>
                         Gastos
                     </div>
-<<<<<<< HEAD
                     <div className="sidebar-item" onClick={() => selectForm('historial')} aria-label="Historial">
                         <i className="bi bi-wallet icon" aria-hidden="true"></i>
                         Historial
                     </div>
-=======
->>>>>>> a47adc3667e3821ac36a4dc3883b757fe8c6ad83
                     <div className={`sidebar-item close-sidebar ${isFormSelected ? '' : 'hidden'}`} onClick={handleCloseSidebar} aria-label="Cerrar">
                         <i className="bi bi-arrow-left-circle icon" aria-hidden="true"></i> {/* Nuevo ícono de "Volver" */}
                         Volver
@@ -133,12 +127,8 @@ const Welcome = () => {
                 {selectedForm === 'save' && <Ahorro />}
                 {selectedForm === 'retirement' && <Jubilacion />}
                 {selectedForm === 'goal' && <Metas />}
-<<<<<<< HEAD
                 {selectedForm === 'gastos' && <Gastos />}
                 {selectedForm === 'historial' && <Historial />}
-=======
-                {selectedForm === 'gastos' && <Gastos userId={user._id} />} {/* Pasar userId a Gastos */}
->>>>>>> a47adc3667e3821ac36a4dc3883b757fe8c6ad83
             </div>
         </div>
     );
