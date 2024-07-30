@@ -127,8 +127,8 @@ const Welcome = () => {
                 {selectedForm === 'save' && <Ahorro />}
                 {selectedForm === 'retirement' && <Jubilacion />}
                 {selectedForm === 'goal' && <Metas />}
-                {selectedForm === 'gastos' && <Gastos />}
-                {selectedForm === 'historial' && <Historial />}
+                {selectedForm === 'gastos' && <Gastos userId = {user._id}/>}  
+                {selectedForm === 'historial' && <Historial userId = {user._id}/>}
             </div>
         </div>
     );
