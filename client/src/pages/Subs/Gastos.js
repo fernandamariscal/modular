@@ -6,7 +6,7 @@ const Gastos = ({ userId }) => {
     const [showForm, setShowForm] = useState(false);
     const [showServiceForm, setShowServiceForm] = useState(false);
     const [expenses, setExpenses] = useState([{ type: '', name: '', cost: '' }]);
-    const [services, setServices] = useState([{ type: '', amount: '', frequency: '' }]);
+    const [services, setServices] = useState([{ type: '', cost: '', frequency: '' }]);
 
     const handleRegisterGasto = () => {
         setShowForm(true);
@@ -22,12 +22,12 @@ const Gastos = ({ userId }) => {
         setShowForm(false);
         setShowServiceForm(false);
         setExpenses([{ type: '', name: '', cost: '' }]);
-        setServices([{ type: '', amount: '', frequency: '' }]);
+        setServices([{ type: '', cost: '', frequency: '' }]);
     };
 
     const handleChange = (index, field, value, form) => {
         const newForm = form === 'expenses' ? [...expenses] : [...services];
-        if (field === 'amount') {
+        if (field === 'cost' || field === 'cost') {
             value = Math.max(0, value);
         }
         newForm[index][field] = value;
@@ -43,7 +43,7 @@ const Gastos = ({ userId }) => {
     };
 
     const handleAddService = () => {
-        setServices([...services, { type: '', amount: '', frequency: '' }]);
+        setServices([...services, { type: '', cost: '', frequency: '' }]);
     };
 
     const handleRemoveService = (index) => {
@@ -78,14 +78,19 @@ const Gastos = ({ userId }) => {
                     },
                     body: JSON.stringify({
                         userId,
-                        services
+                        services: services.map(service => ({
+                            type: service.type,
+                            cost: parseFloat(service.cost), // Convertir a número
+                            frequency: service.frequency
+                        }))
                     })
                 });
 
                 if (response.ok) {
                     console.log('Servicios registrados con éxito');
                 } else {
-                    console.error('Error al registrar los servicios');
+                    const errorData = await response.json();
+                    console.error('Error al registrar los servicios:', errorData.message);
                 }
             }
             handleCloseForm();
@@ -201,12 +206,12 @@ const Gastos = ({ userId }) => {
                                         </select>
                                     </div>
                                     <div className="form-group">
-                                        <label htmlFor={`amount-${index}`}>Monto:</label>
+                                        <label htmlFor={`cost-${index}`}>Monto:</label>
                                         <input
                                             type="number"
                                             id={`amount-${index}`}
-                                            value={service.amount}
-                                            onChange={(e) => handleChange(index, 'amount', Math.max(0, e.target.value), 'services')}
+                                            value={service.cost}
+                                            onChange={(e) => handleChange(index, 'cost', Math.max(0, e.target.value), 'services')}
                                             min="0" // Evita números negativos
                                             required
                                         />
