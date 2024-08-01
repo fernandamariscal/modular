@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Welcome.css';
 import MenuForms from './MenuForms/MenuForms';
 import Inicio from './Inicio';
@@ -7,6 +8,8 @@ import Jubilacion from '../Subs/Jubilacion';
 import Metas from '../Subs/Metas';
 import Gastos from '../Subs/Gastos';
 import Historial from '../Subs/Historial';
+import Profile from './Profile';
+import Content from './Content'; // Importa el nuevo componente Content
 
 const Welcome = () => {
     const [user, setUser] = useState({ Nombres: 'Usuario', Apellidos: '', _id: '' });
@@ -14,7 +17,8 @@ const Welcome = () => {
     const [showContent, setShowContent] = useState(false);
     const [showInicio, setShowInicio] = useState(true);
     const [selectedForm, setSelectedForm] = useState(null);
-    const [userMenuOpen, setUserMenuOpen] = useState(false); // Nuevo estado para el menú del usuario
+    const [userMenuOpen, setUserMenuOpen] = useState(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const userData = JSON.parse(localStorage.getItem('user')) || {};
@@ -61,7 +65,17 @@ const Welcome = () => {
     };
 
     const toggleUserMenu = () => {
-        setUserMenuOpen(!userMenuOpen); // Alterna la visibilidad del menú del usuario
+        setUserMenuOpen(!userMenuOpen);
+    };
+
+    const handleProfileClick = () => {
+        setSelectedForm('profile');
+        toggleUserMenu();
+    };
+
+    const handleContentClick = () => {
+        setSelectedForm('content');
+        toggleUserMenu();
     };
 
     const isFormSelected = selectedForm !== null;
@@ -75,16 +89,16 @@ const Welcome = () => {
                     <div></div>
                     <div></div>
                 </div>
-                <i className="bi bi-person user-icon" onClick={toggleUserMenu}></i> {/* Ícono de usuario con funcionalidad */}
-                {/* Menú desplegable del usuario */}
+                <i className="bi bi-person user-icon" onClick={toggleUserMenu}></i>
                 {userMenuOpen && (
                     <div className="user-menu">
-                        <div className="user-menu-item">
+                        <div className="user-menu-item" onClick={handleContentClick}>
                             <i className="bi bi-house-door"></i> My Content
                         </div>
-                        <div className="user-menu-item">
+                        <div className="user-menu-item" onClick={handleProfileClick}>
                             <i className="bi bi-person-circle"></i> Profile
                         </div>
+                        <a href='' > </a>
                         <div className="user-menu-item">
                             <i className="bi bi-box-arrow-right"></i> Log Out
                         </div>
@@ -114,7 +128,7 @@ const Welcome = () => {
                         Historial
                     </div>
                     <div className={`sidebar-item close-sidebar ${isFormSelected ? '' : 'hidden'}`} onClick={handleCloseSidebar} aria-label="Cerrar">
-                        <i className="bi bi-arrow-left-circle icon" aria-hidden="true"></i> {/* Nuevo ícono de "Volver" */}
+                        <i className="bi bi-arrow-left-circle icon" aria-hidden="true"></i>
                         Volver
                     </div>
                 </div>
@@ -127,8 +141,10 @@ const Welcome = () => {
                 {selectedForm === 'save' && <Ahorro />}
                 {selectedForm === 'retirement' && <Jubilacion />}
                 {selectedForm === 'goal' && <Metas />}
-                {selectedForm === 'gastos' && <Gastos userId = {user._id}/>}  
-                {selectedForm === 'historial' && <Historial userId = {user._id}/>}
+                {selectedForm === 'gastos' && <Gastos userId={user._id} />}
+                {selectedForm === 'historial' && <Historial userId={user._id} />}
+                {selectedForm === 'profile' && <Profile user={user} title="Perfil" />}
+                {selectedForm === 'content' && <Content />}
             </div>
         </div>
     );
