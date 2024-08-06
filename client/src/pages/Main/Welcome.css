@@ -15,6 +15,36 @@
     box-sizing: border-box; /* Incluye el padding en el ancho total */
 }
 
+/* Contenedor del ícono del mensaje en la esquina inferior derecha */
+.message-icon {
+    position: fixed;
+    bottom: 20px; 
+    right: 20px; 
+    background-color: #333; 
+    border-radius: 50%; 
+    width: 50px; /* Ajusta el ancho del círculo */
+    height: 50px; /* Ajusta la altura del círculo para que sea igual al ancho */
+    color: #fff; /* Color del ícono */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+    cursor: pointer; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; /* Centra verticalmente el ícono */
+    transition: transform 0.3s ease, background-color 0.3s ease; /* Transición para animación */
+}
+
+/* Ajusta el tamaño del ícono dentro del círculo */
+.message-icon i {
+    font-size: 24px; /* Ajusta el tamaño del ícono según el tamaño del círculo */
+}
+
+/* Efecto de animación al pasar el cursor sobre el ícono */
+.message-icon:hover {
+    background-color: #555; /* Cambia el fondo cuando el puntero está sobre el ícono */
+    transform: scale(1.3); /* Aumenta el tamaño del círculo ligeramente */
+}
+
+
 
 /* Icono del usuario en la franja negra */
 .user-icon {
