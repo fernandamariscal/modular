@@ -146,6 +146,9 @@ const Welcome = () => {
                 {selectedForm === 'profile' && <Profile user={user} title="Perfil" />}
                 {selectedForm === 'content' && <Content />}
             </div>
+            <div className="message-icon">
+                <i className="bi bi-chat"></i>
+            </div>
         </div>
     );
 };
