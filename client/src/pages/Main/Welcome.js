@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import './Welcome.css';
 import MenuForms from './MenuForms/MenuForms';
 import Inicio from './Inicio';
@@ -18,7 +17,6 @@ const Welcome = () => {
     const [showInicio, setShowInicio] = useState(true);
     const [selectedForm, setSelectedForm] = useState(null);
     const [userMenuOpen, setUserMenuOpen] = useState(false);
-    const navigate = useNavigate();
 
     useEffect(() => {
         const userData = JSON.parse(localStorage.getItem('user')) || {};
@@ -98,7 +96,6 @@ const Welcome = () => {
                         <div className="user-menu-item" onClick={handleProfileClick}>
                             <i className="bi bi-person-circle"></i> Profile
                         </div>
-                        <a href='' > </a>
                         <div className="user-menu-item">
                             <i className="bi bi-box-arrow-right"></i> Log Out
                         </div>
@@ -144,10 +141,7 @@ const Welcome = () => {
                 {selectedForm === 'gastos' && <Gastos userId={user._id} />}
                 {selectedForm === 'historial' && <Historial userId={user._id} />}
                 {selectedForm === 'profile' && <Profile user={user} title="Perfil" />}
-                {selectedForm === 'content' && <Content />}
-            </div>
-            <div className="message-icon">
-                <i className="bi bi-chat"></i>
+                {selectedForm === 'content' && <Content user={user }/>}
             </div>
         </div>
     );
