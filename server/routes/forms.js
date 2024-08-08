@@ -4,6 +4,7 @@ const Initial = require('../models/Initial'); // Importa el modelo Initial
 const Goal = require('../models/Goal');
 const Save = require('../models/Save');
 const Retire = require('../models/Retire');
+const mongoose = require('mongoose');
 
 // Ruta para guardar el formulario inicial
 router.post('/initial', async (req, res) => {
@@ -104,6 +105,69 @@ router.post('/retires', async (req, res) => {
 
 
 
+router.get('/initial/getInitial/:userId', async (req, res) => {
+    const { userId } = req.params;
+
+    if (!mongoose.Types.ObjectId.isValid(userId)) {
+        return res.status(400).json({ message: 'Invalid user ID' });
+    }
+
+    try {
+        const initialForm = await Initial.findOne({ userId });
+        res.status(200).json(initialForm || {});
+    } catch (error) {
+        console.error('Error fetching initial form:', error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+});
+
+router.get('/goals/getGoals/:userId', async (req, res) => {
+    const { userId } = req.params;
+
+    if (!mongoose.Types.ObjectId.isValid(userId)) {
+        return res.status(400).json({ message: 'Invalid user ID' });
+    }
+
+    try {
+        const goalsForm = await Goal.findOne({ userId });
+        res.status(200).json(goalsForm || {});
+    } catch (error) {
+        console.error('Error fetching goals form:', error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+});
+
+router.get('/save/getSave/:userId', async (req, res) => {
+    const { userId } = req.params;
+
+    if (!mongoose.Types.ObjectId.isValid(userId)) {
+        return res.status(400).json({ message: 'Invalid user ID' });
+    }
+
+    try {
+        const saveForm = await Save.findOne({ userId });
+        res.status(200).json(saveForm || {});
+    } catch (error) {
+        console.error('Error fetching save form:', error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+});
+
+router.get('/retires/getRetires/:userId', async (req, res) => {
+    const { userId } = req.params;
+
+    if (!mongoose.Types.ObjectId.isValid(userId)) {
+        return res.status(400).json({ message: 'Invalid user ID' });
+    }
+
+    try {
+        const retireForm = await Retire.findOne({ userId });
+        res.status(200).json(retireForm || {});
+    } catch (error) {
+        console.error('Error fetching retire form:', error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+});
 
 
 module.exports = router;
