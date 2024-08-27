@@ -94,7 +94,7 @@ const Content = ({ user = {} }) => {
                         <p>Meta a Corto Plazo: {goalForm.shortTerm ? 'Sí' : 'No'}</p>
                         <p>Meta a Mediano Plazo: {goalForm.mediumTerm ? 'Sí' : 'No'}</p>
                         <p>Meta a Largo Plazo: {goalForm.longTerm ? 'Sí' : 'No'}</p>
-                        <p>Presupuesto Mensual: {goalForm.monthlyBudget}</p>
+                        <p>Presupuesto Mensual: {goalForm.monthlyBudget ? 'Sí' : 'No'}</p>
                         <p>Tipo de Meta: {goalForm.goalType}</p>
                     </div>
                 )}
