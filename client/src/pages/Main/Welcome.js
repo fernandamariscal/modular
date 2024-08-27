@@ -109,8 +109,8 @@ const Welcome = () => {
                         Generar Ahorro
                     </div>
                     <div className="sidebar-item" onClick={() => selectForm('retirement')} aria-label="Plan de Jubilación">
-                        <i className="bi bi-building icon" aria-hidden="true"></i>
-                        Plan de Jubilación
+                        <i className="bi bi-currency-dollar icon" aria-hidden="true"></i>
+                        Predicción Moneda
                     </div>
                     <div className="sidebar-item" onClick={() => selectForm('goal')} aria-label="Metas Largo/Corto Plazo">
                         <i className="bi bi-target icon" aria-hidden="true"></i>
@@ -142,6 +142,9 @@ const Welcome = () => {
                 {selectedForm === 'historial' && <Historial userId={user._id} />}
                 {selectedForm === 'profile' && <Profile user={user} title="Perfil" />}
                 {selectedForm === 'content' && <Content user={user }/>}
+            </div>
+            <div className="message-icon">
+                <i className="fas fa-comments"></i> {/* Ícono de chat */}
             </div>
         </div>
     );
