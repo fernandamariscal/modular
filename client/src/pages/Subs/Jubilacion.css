@@ -1,0 +1,96 @@
+/* Jubilacion.css */
+
+.jubilacion-container {
+    padding: 80px;
+    background: linear-gradient(120deg, #fffeff 40%, #7dc9ec 50%, #10685c); /* Gradiente diferente */
+    border-radius: 12px; /* Bordes más redondeados */
+    width: 200%; /* Ancho diferente */
+    max-width: 1400px; /* Ancho máximo ajustado */
+    margin: 0;
+    position: relative;
+    left: -50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada */
+    min-height: 650px; /* Altura mínima diferente */
+}
+
+.jubilacion-title {
+    font-size: 2em;
+    color: #1b263b; /* Color del título */
+    margin-bottom: 20px;
+}
+
+.jubilacion-content {
+    background-color: rgba(255, 255, 255, 0.479); /* Fondo blanco con transparencia */
+    padding: 25px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra sutil para dar profundidad */
+}
+
+.jubilacion-content p {
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.jubilacion-content h2 {
+    color: #02045e; /* Un color diferente para los subtítulos */
+}
+
+.jubilacion-content .highlight {
+    background-color: #1317188a; /* Fondo resaltado */
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+/* Botones circulares */
+.button-container {
+    display: flex;
+    justify-content: center; /* Centrar los botones */
+    margin-top: 20px; /* Espaciado superior */
+}
+
+.circular-button {
+    width: 80px; /* Ancho del botón */
+    height: 80px; /* Alto del botón */
+    border-radius: 50%; /* Hacer el botón circular */
+    border: none; /* Sin borde */
+    color: white; /* Color del texto */
+    font-size: 1em; /* Tamaño de fuente */
+    cursor: pointer; /* Cambiar el cursor al pasar por encima */
+    margin: 0 10px; /* Espaciado entre los botones */
+    transition: background-color 0.3s, transform 0.2s; /* Transición para el cambio de color y transformación */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidad */
+}
+
+.comprar-button {
+    background-color: #007bff; /* Color de fondo para "Comprar" */
+}
+
+.comprar-button:hover {
+    background-color: #0056b3; /* Color al pasar el mouse */
+    transform: translateY(-2px); /* Efecto de elevación al pasar el mouse */
+}
+
+.vender-button {
+    background-color: #dc3545; /* Color de fondo para "Vender" */
+}
+
+.vender-button:hover {
+    background-color: #c82333; /* Color al pasar el mouse */
+    transform: translateY(-2px); /* Efecto de elevación al pasar el mouse */
+}
+@keyframes slideIn {
+    0% {
+        opacity: 0; /* Comienza invisible */
+        transform: translateY(20px); /* Se desplaza hacia abajo */
+    }
+    100% {
+        opacity: 1; /* Alcanza la opacidad completa */
+        transform: translateY(0); /* Se desplaza a su posición original */
+    }
+}
+
+.jubilacion-content {
+    animation: slideIn 0.5s ease forwards; /* Aplicar la animación */
+}
