@@ -94,3 +94,47 @@
 .jubilacion-content {
     animation: slideIn 0.5s ease forwards; /* Aplicar la animación */
 }
+
+.jubilacion-container {
+    padding: 20px;
+}
+
+.jubilacion-title {
+    text-align: center;
+    color: #333;
+}
+
+.jubilacion-content {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.recharts-wrapper {
+    margin: 0 auto;
+}
+.button-container {
+    display: flex;
+    justify-content: center; /* Centra los botones horizontalmente */
+    margin: 20px 0; /* Espacio arriba y abajo de los botones */
+}
+
+.action-button {
+    background-color: #007bff; /* Color de fondo */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 10px 20px; /* Espaciado interno */
+    margin: 0 10px; /* Espacio entre botones */
+    cursor: pointer; /* Cambia el cursor al pasar el mouse */
+    transition: background-color 0.3s; /* Transición para el efecto hover */
+}
+
+.action-button:hover {
+    background-color: #0056b3; /* Color más oscuro al pasar el mouse */
+}
+/* Botón para la predicción */
+.prediction-button-container {
+    display: flex;
+    justify-content: center; /* Centrar el botón de predicción */
+    margin: 20px 0; /* Espacio arriba y abajo del botón */
+}
