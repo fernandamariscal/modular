@@ -9,7 +9,11 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+<<<<<<< HEAD
     "axios": "^1.7.7",
+=======
+    "axios": "^1.7.2",
+>>>>>>> 1e66260cf18b24235c82438f5454d12976e837f4
     "bootstrap": "^5.3.3",
     "react": "^18.3.1",
     "react-datepicker": "^6.9.0",
@@ -17,7 +21,10 @@
     "react-icons": "^5.2.1",
     "react-router-dom": "^6.23.1",
     "react-scripts": "5.0.1",
+<<<<<<< HEAD
     "recharts": "^2.12.7",
+=======
+>>>>>>> 1e66260cf18b24235c82438f5454d12976e837f4
     "sass": "^1.77.0",
     "web-vitals": "^2.1.4"
   },
