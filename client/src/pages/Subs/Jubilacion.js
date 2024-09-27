@@ -4,8 +4,8 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContai
 
 const Jubilacion = () => {
     const [data, setData] = useState([]);
-    const [predictions, setPredictions] = useState([]);  // Estado para las predicciones ARMA
     const [loading, setLoading] = useState(true);
+    const [showPrediction, setShowPrediction] = useState(false);
 
     // Función para obtener los datos y predicciones ARMA del backend
     const fetchArmaData = async () => {
@@ -13,15 +13,28 @@ const Jubilacion = () => {
             const response = await fetch('http://localhost:8000/arma-predictions');  // URL del backend
             const result = await response.json();
 
-            // Formatear los datos y las predicciones
+            // Formatear los datos (solo datos reales, sin predicciones)
             const chartData = result.dates.map((date, index) => ({
                 date: date,
                 value: result.values[index] || null,       // Valor real
-                prediction: result.predictions[index] || null  // Predicción ARMA
+                prediction: null  // No hay predicción para estas fechas
             }));
-            
 
-            setData(chartData);
+            // Crear un nuevo arreglo de datos solo para las predicciones
+            const predictionStartDate = new Date(chartData[chartData.length - 1].date);
+            const predictionsData = [];
+
+            for (let i = 0; i < 10; i++) {
+                predictionStartDate.setDate(predictionStartDate.getDate() + 1);
+                predictionsData.push({
+                    date: predictionStartDate.toISOString().split('T')[0], // Formato YYYY-MM-DD
+                    value: null, // No hay valor real para los días de predicción
+                    prediction: result.predictions[i] || null // Usar las predicciones
+                });
+            }
+
+            // Combinar datos reales y predicciones
+            setData([...chartData, ...predictionsData]);
             setLoading(false);
         } catch (error) {
             console.error('Error fetching ARMA data:', error);
@@ -33,6 +46,11 @@ const Jubilacion = () => {
         fetchArmaData();  // Llamar a la función cuando el componente se monte
     }, []);
 
+    // Función para alternar la visibilidad de las predicciones
+    const togglePrediction = () => {
+        setShowPrediction(!showPrediction);
+    };
+
     return (
         <div className="jubilacion-container">
             <h1 className="jubilacion-title">Predicción de Moneda usando ARMA</h1>
@@ -42,22 +60,29 @@ const Jubilacion = () => {
                 {loading ? (
                     <p>Cargando datos...</p>
                 ) : (
-                    <ResponsiveContainer width="100%" height={400}>
-                        <LineChart data={data}>
-                            <CartesianGrid strokeDasharray="3 3" />
-                            <XAxis dataKey="date" />
-                            <YAxis ticks={[12, 18, 24]} domain={[12, 24]} />
-                            <Tooltip />
-                            {/* Línea para los datos reales */}
-                            <Line type="monotone" dataKey="value" stroke="#007bff" />
-                            {/* Línea para las predicciones */}
-                            <Line type="monotone" dataKey="prediction" stroke="#ff0000" />
-                        </LineChart>
-                    </ResponsiveContainer>
+                    <>
+                        <button onClick={togglePrediction}>
+                            {showPrediction ? 'Ocultar predicción' : 'Mostrar predicción'}
+                        </button>
+                        <ResponsiveContainer width="100%" height={400}>
+                            <LineChart data={data}>
+                                <CartesianGrid strokeDasharray="3 3" />
+                                <XAxis dataKey="date" />
+                                <YAxis ticks={[12, 18, 24]} domain={[12, 24]} />
+                                <Tooltip />
+                                {/* Línea para los datos reales */}
+                                <Line type="monotone" dataKey="value" stroke="#007bff" />
+                                {/* Línea para las predicciones futuras, solo si se activa */}
+                                {showPrediction && (
+                                    <Line type="monotone" dataKey="prediction" stroke="#ff0000" />
+                                )}
+                            </LineChart>
+                        </ResponsiveContainer>
+                    </>
                 )}
             </div>
         </div>
     );
-};    
+};
 
 export default Jubilacion;
