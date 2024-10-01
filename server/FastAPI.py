@@ -101,7 +101,6 @@ def prophet_predictions():
 def arma_predictions():
     result = get_arma_predictions()
     return result
-
 #
 #pip install -r requirements.txt
 #uvicorn app:app --reload
