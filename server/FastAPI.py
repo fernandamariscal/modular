@@ -5,6 +5,8 @@ import requests
 import statsmodels.api as sm
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
+import yfinance as yf
+from prophet import Prophet
 
 app = FastAPI()
 
@@ -23,7 +25,7 @@ def get_arma_predictions():
         'from': 'USD',
         'to': 'MXN',
         'interval': 'P1D',
-        'api_key': 'c80584cb38-3c1fd2f449-sk8eb7'  #API key
+        'api_key': '7487e94f8f-82434b0371-skncut'  #API key
     }
 
     response = requests.get(url, params=params)
@@ -54,11 +56,52 @@ def get_arma_predictions():
         'predictions': list(predictions)
     }
 
+#Prophet metodo 
+
+# Función para obtener datos históricos de moneda y predecir usando Prophet
+def get_currency_predictions():
+    # Descargar datos históricos del tipo de cambio USD/MXN desde Yahoo Finance
+    data = yf.download('USDMXN=X', start='2024-01-01', end='2024-09-30')
+
+    # Formatear los datos para Prophet
+    df = data[['Adj Close']].reset_index()  # 'Adj Close' es el precio ajustado de cierre
+    df.columns = ['ds', 'y']  # Cambiar nombres de columnas para Prophet (ds: fecha, y: valor)
+    
+    # Inicializar y entrenar el modelo Prophet
+    model = Prophet()
+    model.fit(df)
+
+    # Crear DataFrame futuro para predicción (predicción para los próximos 10 días)
+    future = model.make_future_dataframe(periods=10)
+    forecast = model.predict(future)
+
+    # Extraer las predicciones y fechas
+    predicted_dates = forecast['ds'].dt.strftime('%Y-%m-%d').tolist()
+    predicted_values = forecast['yhat'].tolist()
+
+    # Obtener los últimos 10 valores del rango de entrenamiento
+    last_dates = df['ds'].dt.strftime('%Y-%m-%d').tolist()[-10:]  # Últimas 10 fechas del rango de entrenamiento
+    last_values = df['y'].tolist()[-10:]  # Últimos 10 valores del rango de entrenamiento
+
+    # Devolver los datos actuales y las predicciones
+    return {
+        'dates': last_dates,
+        'values': last_values,
+        'predictions': predicted_values[-10:]  # Últimos 10 valores son las predicciones futuras
+    }
+
+# Endpoint de predicción de moneda usando Prophet
+@app.get("/prophet-predictions")
+def prophet_predictions():
+    result = get_currency_predictions()
+    return result
+
 # Endpoint de predicción ARMA
 @app.get("/arma-predictions")
 def arma_predictions():
     result = get_arma_predictions()
     return result
+
 #
 #pip install -r requirements.txt
 #uvicorn app:app --reload

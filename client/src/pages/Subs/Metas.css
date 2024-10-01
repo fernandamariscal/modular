@@ -1,0 +1,108 @@
+.metas-container {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  h1 {
+    text-align: center;
+    color: #333;
+  }
+  
+  h2 {
+    color: #007bff;
+    margin-top: 20px;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  li {
+    background: #f8f9fa;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .cta-container {
+    text-align: center;
+    margin-top: 30px;
+  }
+  
+  .cta-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .cta-button:hover {
+    background-color: #0056b3;
+  }
+  .plan-item {
+    cursor: pointer;
+  }
+  
+  .plan-item.selected {
+    background-color: #007bff;
+    color: white;
+  }
+  .investment-plans {
+    margin-top: 20px;
+  }
+  
+  .investment-plans ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .investment-plans li {
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin: 5px 0;
+    cursor: pointer;
+  }
+  
+  .investment-plans li:hover {
+    background-color: #f0f0f0;
+  }
+  .metas-container {
+    padding: 20px;
+  }
+  
+  .investment-plans {
+    margin-top: 20px;
+  }
+  
+  .plan-cards {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .plan-card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 15px;
+    width: 30%;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .plan-card:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .investment-calculator {
+    margin-top: 20px;
+  }
+  
+  .investment-calculator input {
+    margin-right: 10px;
+  }
+  
