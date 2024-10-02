@@ -8,6 +8,7 @@ const Jubilacion = () => {
     const [loading, setLoading] = useState(true);
     const [showProphetPrediction, setShowProphetPrediction] = useState(false);
     const [showArmaPrediction, setShowArmaPrediction] = useState(false);
+    const [selectedMonths, setSelectedMonths] = useState(3); // Estado para los meses seleccionados
 
     // Función para obtener los datos y predicciones de Prophet del backend
     const fetchProphetData = async () => {
@@ -83,51 +84,75 @@ const Jubilacion = () => {
         setShowArmaPrediction(!showArmaPrediction);
     };
 
+    // Función para manejar el cálculo de la predicción
+    const handleCalculate = () => {
+        // Lógica para calcular la predicción basada en `selectedMonths`
+        console.log(`Calculando predicciones para ${selectedMonths} meses`);
+        // Aquí puedes agregar la lógica para mostrar las predicciones de los últimos días de cada mes seleccionado.
+    };
+
     return (
         <div className="jubilacion-container">
             <h1 className="jubilacion-title">Predicción de Moneda</h1>
             <div className="jubilacion-content">
                 <p>Este gráfico muestra el precio del dólar frente al peso mexicano (MXN) y las predicciones de los modelos Prophet y ARMA.</p>
-
+    
                 {loading ? (
                     <p>Cargando datos...</p>
                 ) : (
                     <>
-                        <button onClick={toggleProphetPrediction}>
-                            {showProphetPrediction ? 'Ocultar predicción de Prophet' : 'Mostrar predicción de Prophet'}
-                        </button>
-                        <ResponsiveContainer width="100%" height={400}>
-                            <LineChart data={prophetData}>
-                                <CartesianGrid strokeDasharray="3 3" />
-                                <XAxis dataKey="date" />
-                                <YAxis />
-                                <Tooltip />
-                                {/* Línea para los datos reales de Prophet */}
-                                <Line type="monotone" dataKey="value" stroke="#007bff" />
-                                {/* Línea para las predicciones de Prophet, solo si se activa */}
-                                {showProphetPrediction && (
-                                    <Line type="monotone" dataKey="prediction" stroke="#ff0000" />
-                                )}
-                            </LineChart>
-                        </ResponsiveContainer>
-
-                        <button onClick={toggleArmaPrediction}>
-                            {showArmaPrediction ? 'Ocultar predicción de ARMA' : 'Mostrar predicción de ARMA'}
-                        </button>
-                        <ResponsiveContainer width="100%" height={400}>
-                            <LineChart data={armaData}>
-                                <CartesianGrid strokeDasharray="3 3" />
-                                <XAxis dataKey="date" />
-                                <YAxis />
-                                <Tooltip />
-                                {/* Línea para los datos reales de ARMA */}
-                                <Line type="monotone" dataKey="value" stroke="#28a745" />
-                                {/* Línea para las predicciones de ARMA, solo si se activa */}
-                                {showArmaPrediction && (
-                                    <Line type="monotone" dataKey="prediction" stroke="#ff8000" />
-                                )}
-                            </LineChart>
-                        </ResponsiveContainer>
+                        <div className="button-container">
+                            <button className="btn btn-primary" onClick={toggleProphetPrediction}>
+                                <i className={`bi bi-${showProphetPrediction ? 'eye-slash' : 'eye'}`}></i>
+                                {showProphetPrediction ? ' Ocultar predicción de Prophet' : ' Mostrar predicción de Prophet'}
+                            </button>
+                            <div className="calculo-controls">
+                                <label htmlFor="calcular">Calcular A:</label>
+                                <select id="calcular" value={selectedMonths} onChange={(e) => setSelectedMonths(e.target.value)}>
+                                    <option value="3 Meses">3 Meses</option>
+                                    <option value="4 Meses">4 Meses</option>
+                                    <option value="5 Meses">5 Meses</option>
+                                    <option value="6 Meses">6 Meses</option>
+                                </select>
+                                <button className="btn btn-secondary" onClick={handleCalculate}>
+                                    <i className="bi bi-calculator"></i>
+                                    Aplicar
+                                </button>
+                            </div>
+                        </div>
+                    
+                        <div className="chart-container">
+                            <ResponsiveContainer width="100%" height={300}> {/* Ajusta la altura aquí */}
+                                <LineChart data={prophetData}>
+                                    <CartesianGrid strokeDasharray="3 3" />
+                                    <XAxis dataKey="date" />
+                                    <YAxis />
+                                    <Tooltip />
+                                    <Line type="monotone" dataKey="value" stroke="#007bff" />
+                                    {showProphetPrediction && (
+                                        <Line type="monotone" dataKey="prediction" stroke="#ff0000" />
+                                    )}
+                                </LineChart>
+                            </ResponsiveContainer>
+    
+                            <button className="btn btn-success" onClick={toggleArmaPrediction}>
+                                <i className={`bi bi-${showArmaPrediction ? 'eye-slash' : 'eye'}`}></i>
+                                {showArmaPrediction ? ' Ocultar predicción de ARMA' : ' Mostrar predicción de ARMA'}
+                            </button>
+                            
+                            <ResponsiveContainer width="100%" height={300}> {/* Ajusta la altura aquí */}
+                                <LineChart data={armaData}>
+                                    <CartesianGrid strokeDasharray="3 3" />
+                                    <XAxis dataKey="date" />
+                                    <YAxis />
+                                    <Tooltip />
+                                    <Line type="monotone" dataKey="value" stroke="#28a745" />
+                                    {showArmaPrediction && (
+                                        <Line type="monotone" dataKey="prediction" stroke="#ff8000" />
+                                    )}
+                                </LineChart>
+                            </ResponsiveContainer>
+                        </div>
                     </>
                 )}
             </div>

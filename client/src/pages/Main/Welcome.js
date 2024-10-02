@@ -6,9 +6,10 @@ import Ahorro from '../Subs/Ahorro';
 import Jubilacion from '../Subs/Jubilacion';
 import Metas from '../Subs/Metas';
 import Gastos from '../Subs/Gastos';
+import Dolar from '../Subs/Dolar';
 import Historial from '../Subs/Historial';
 import Profile from './Profile';
-import Content from './Content'; // Importa el nuevo componente Content
+import Content from './Content';
 
 const Welcome = () => {
     const [user, setUser] = useState({ Nombres: 'Usuario', Apellidos: '', _id: '' });
@@ -116,6 +117,10 @@ const Welcome = () => {
                         <i className="bi bi-target icon" aria-hidden="true"></i>
                         Metas Largo/Corto Plazo
                     </div>
+                    <div className="sidebar-item" onClick={() => selectForm('dolar')} aria-label="Dolar">
+                        <i className="bi bi-wallet icon" aria-hidden="true"></i>
+                        Precio Dolar
+                    </div>
                     <div className="sidebar-item" onClick={() => selectForm('gastos')} aria-label="Gastos">
                         <i className="bi bi-wallet icon" aria-hidden="true"></i>
                         Gastos
@@ -134,14 +139,16 @@ const Welcome = () => {
                 <h1>Bienvenido, {user.Nombres} {user.Apellidos}</h1>
             </div>
             <div className={`menu-form-container ${showContent ? 'show' : ''}`}>
+                {/* Agrega MenuForms aquí */}
                 {!isFormSelected && <MenuForms userId={user._id} selectedForm={selectedForm} />}
                 {selectedForm === 'save' && <Ahorro />}
                 {selectedForm === 'retirement' && <Jubilacion />}
                 {selectedForm === 'goal' && <Metas />}
+                {selectedForm === 'dolar' && <Dolar userId={user._id} />}
                 {selectedForm === 'gastos' && <Gastos userId={user._id} />}
                 {selectedForm === 'historial' && <Historial userId={user._id} />}
                 {selectedForm === 'profile' && <Profile user={user} title="Perfil" />}
-                {selectedForm === 'content' && <Content user={user }/>}
+                {selectedForm === 'content' && <Content user={user} />}
             </div>
             <div className="message-icon">
                 <i className="fas fa-comments"></i> {/* Ícono de chat */}

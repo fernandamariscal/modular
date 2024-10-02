@@ -1,45 +1,78 @@
 import React, { useState } from 'react';
-import './MenuForms.css'; // Importa tu archivo de estilos
-import SaveForm from './SaveForm';
-import RetireForm from './RetireForm';
-import GoalsForm from './GoalsForm';
+import { useNavigate } from 'react-router-dom'; // Importa useNavigate
+import './MenuForms.css';
 
-const MenuForms = ({ userId }) => { // Recibe userId como prop
-    const [selectedForm, setSelectedForm] = useState(null); // Estado para controlar qué formulario mostrar
+const MenuForms = () => {
+    const [info, setInfo] = useState('');
+    const navigate = useNavigate(); // Inicializa useNavigate
 
-    // Función para seleccionar y mostrar el formulario adecuado
-    const selectForm = (formType) => {
-        setSelectedForm(formType);
+    const scrollToInfo = () => {
+        const infoSection = document.getElementById('info-section');
+        if (infoSection) {
+            infoSection.scrollIntoView({ behavior: 'smooth' });
+        }
     };
 
-    const handleCloseForm = () => {
-        setSelectedForm(null); // Resetear el formulario seleccionado al cerrar
+    const handleAhorroClick = () => {
+        setInfo('Generar Ahorro');
+        scrollToInfo();
+    };
+
+    const handleJubilacionClick = () => {
+        setInfo('Plan de Jubilación');
+        scrollToInfo();
+    };
+
+    const handleMetasClick = () => {
+        setInfo('Metas Largo/Corto Plazo');
+        scrollToInfo();
+    };
+
+    const handleNavigateAhorro = () => {
+        navigate('/ahorro'); // Redirige a la ruta del componente Ahorro
     };
 
     return (
         <div className="menu-form">
             <h2>¿En qué puede ayudarte FinanTec?</h2>
             <div className="menu-options">
-                <div className="saving-box green" onClick={() => selectForm('save')}>
+                <div className="saving-box green" onClick={handleAhorroClick}>
                     <div className="icon">💰</div>
-                    <div>Generar Ahorro</div>
+                    <span>Generar Ahorro</span>
                 </div>
-                <div className="saving-box blue" onClick={() => selectForm('retirement')}>
+                <div className="saving-box blue" onClick={handleJubilacionClick}>
                     <div className="icon">🏦</div>
-                    <div>Plan de Jubilación</div>
+                    <span>Plan de Jubilación</span>
                 </div>
-                <div className="saving-box pink" onClick={() => selectForm('goal')}>
+                <div className="saving-box pink" onClick={handleMetasClick}>
                     <div className="icon">🎯</div>
-                    <div>Metas Largo/Corto Plazo</div>
+                    <span>Metas Largo/Corto Plazo</span>
                 </div>
             </div>
 
-            {/* Mostrar SaveForm si selectedForm es 'save' */}
-            {selectedForm === 'save' && <SaveForm userId={userId} onClose={handleCloseForm} />}
-            {selectedForm === 'retirement' && <RetireForm userId={userId} onClose={handleCloseForm} />}
-            {selectedForm === 'goal' && <GoalsForm userId={userId} onClose={handleCloseForm} />}
+            {/* Sección de información */}
+            <div id="info-section" className="info-section">
+                <h3>Información sobre {info || 'FinanTec'}</h3>
+                <p>
+                    {info === 'Generar Ahorro' && (
+                        'FinanTec es tu aliado en el camino hacia una mejor salud financiera. Aquí te proporcionamos herramientas y recursos para ayudarte a establecer metas de ahorro realistas, crear un presupuesto efectivo que se ajuste a tus necesidades, y planificar tu futuro.'
+                    )}
+                    {info === 'Plan de Jubilación' && (
+                        'El Plan de Jubilación de FinanTec te ofrece la guía necesaria para asegurar tu futuro. Te ayudamos a entender las mejores estrategias para ahorrar y a planificar un retiro confortable.'
+                    )}
+                    {info === 'Metas Largo/Corto Plazo' && (
+                        'Con nuestras herramientas, podrás definir y alcanzar tus metas de ahorro a corto y largo plazo. Te apoyamos en la creación de planes que se adapten a tus objetivos financieros específicos.'
+                    )}
+                </p>
+                {/* Botón para redirigir a Ahorro */}
+                {info === 'Generar Ahorro' && (
+                    <button onClick={handleNavigateAhorro} className="navigate-button">
+                        Ir a Generar Ahorro
+                    </button>
+                )}
+            </div>
         </div>
     );
-}
+};
 
 export default MenuForms;
